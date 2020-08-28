@@ -49,6 +49,8 @@ p {
 	height: 100px;
 	width: 100px;
 	border-radius: 25px;
+
+	cursor: pointer;
 }
 
 #add_button {

@@ -9,6 +9,10 @@ p {
 	line-height: 10px;
 }
 
+a {
+	color: inherit;
+}
+
 .top_border {
 	background-color: #f1f1f3;
 

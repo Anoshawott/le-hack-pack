@@ -71,6 +71,18 @@ p {
 	top: 286px;
 }
 
+#add_button:hover {
+	background-color: #f7ad63;
+}
+
+#edit_button:hover {
+	background-color: #f7ad63;
+}
+
+#next_week_button:hover {
+	background-color: #f7ad63;
+}
+
 .button_text {
 	text-align: center;
 

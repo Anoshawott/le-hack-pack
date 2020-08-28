@@ -1,0 +1,23 @@
+.hectic_form {
+	font-size: 20px;
+	position: absolute;
+	top: 138px;
+	left: 50px;
+}
+
+.box_field {
+	position: absolute;
+	left: 300px;
+}
+
+input[type="submit"] {
+	background-color: #74e8a8;
+	font-family: "Verdana";
+	font-size: 16px;
+
+	position: absolute;
+	left: 800px;
+	top: 410px;
+
+	width: 70%;
+}

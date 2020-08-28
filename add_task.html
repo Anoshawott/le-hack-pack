@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="add_task.css">
+</head>
+
+<body>
+	<div class="top_border">
+		<p class="page_heading">Add a New Task</p>
+	</div>
+
+	<div class="side_boi">
+		<div class="button" id="add_button" onclick="location.href='index.html';">
+			<p class="button_text" id="button_symbol">&#8617</p>
+			<p class="button_text">Back</p>
+		</div>
+	</div>
+
+	<!-- I will work on storing the answers in js variables later -->
+	<div class="hectic_form">
+		<form>
+			<p>Name of Task: 
+				<input type="text" class="box_field"></p>
+				<br>
+			<p>Name of Subtask (Optional): 
+				<input type="text" class="box_field"></p>
+				<br>
+			<p>Due Date: 
+				<input type="date" class="box_field"></p>
+				<br>
+			<p>Due Time: 
+				<input type="text" value="HH:MM" class="box_field"></p>
+				<br>
+			<p>Length of Task (hrs): 
+				<input type="text" class="box_field"></p>
+				<br>
+			<p>Priority: </p>
+				<p><input type="radio" name="priority">High </p>
+				<p><input type="radio" name="priority">Medium </p>
+				<p><input type="radio" name="priority">Low </p>
+			</p>
+			<input type="submit" class="button">
+		</form>
+	</div>
+</body>
+
+</html>

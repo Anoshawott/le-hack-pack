@@ -15,5 +15,17 @@ timetable.addLocations(['Monday', 'Tuesday', 'Wednesday', 'Thurday',
 timetable.addEvent('Sightseeing', 'Monday', new Date(2015,7,17,9,00), new Date(2015,7,17,11,30), { url: '#' });
 
 
+// var options = {
+//     url: '#', // makes the event clickable
+//     class: 'vip', // additional css class
+//     data: { // each property will be added to the data-* attributes of the DOM node for this event
+//       id: 4,
+//       ticketType: 'VIP'
+//     },
+//     onClick: function(event, timetable, clickEvent) {} // custom click handler, which is passed the event object and full timetable as context  
+//   };
+//   timetable.addEvent('Jam Session', 'Nile', new Date(2015,7,17,21,15), new Date(2015,7,17,23,30), options);
+
+
 var renderer = new Timetable.Renderer(timetable);
 renderer.draw('.timetable');

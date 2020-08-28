@@ -12,7 +12,7 @@ timetable.setScope(6,23)
 timetable.addLocations(['Monday', 'Tuesday', 'Wednesday', 'Thurday',
                         'Friday', 'Saturday', "Sunday"]);
 
-timetable.addEvent('HACKATHON', 'Monday', new Date(2015,7,17,9,00), new Date(2015,7,17,11,30), { url: '#' });
+timetable.addEvent('HACKATHON', 'Monday', new Date(2015,7,17,9,00), new Date(2015,7,17,11,30), { url: 'https://www.youtube.com/' });
 
 
 // var options = {

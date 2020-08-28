@@ -1,3 +1,6 @@
+import Time_Block from "time_block"
+import Task from "tasks_class"
+
 /*
  * Schedule Handler:
  *    Uses a list of tasks and a list of all time_blocks to

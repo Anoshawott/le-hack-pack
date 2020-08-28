@@ -29,6 +29,27 @@ p {
 	left: 20px;	
 }
 
+.top_links {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.top_link {
+	font-family: "Verdana";
+	display: inline;
+
+	position: relative;
+	top: 58px;
+	left: 300px;
+	padding-left: 100px;	
+}
+
+.top_link:hover {
+	color: #f7ad63;
+	cursor: pointer;
+}
+
 .side_boi {
 	background-color: #f1f1f3;
 

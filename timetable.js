@@ -6,7 +6,7 @@
 // actual code implemented
 var timetable = new Timetable();
 
-timetable.setScope(9,21)
+timetable.setScope(6,23)
 
 // timetable.addLocations(['Monday', 'Madrid', 'Los Angeles', 'London', 'New York', 'Jakarta', 'Tokyo']);
 timetable.addLocations(['Monday', 'Tuesday', 'Wednesday', 'Thurday',

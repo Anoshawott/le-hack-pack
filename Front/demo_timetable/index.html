@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="styles/timetablejs.css">
+	<!-- <link rel="stylesheet" href="styles/plugin.sass"> -->
+    <!-- <link rel="stylesheet" href="styles/demo.css"> -->
+</head>
+
+<body>
+
+	<div class="timetable">
+		<script src="scripts/timetable.js"></script>
+		<script>
+			var timetable = new Timetable();
+
+			timetable.setScope(9,21)
+
+			// timetable.addLocations(['Monday', 'Madrid', 'Los Angeles', 'London', 'New York', 'Jakarta', 'Tokyo']);
+			timetable.addLocations(['Monday', 'Tuesday', 'Wednesday', 'Thurday',
+									'Friday', 'Saturday', "Sunday"]);
+
+			timetable.addEvent('HACKATHON', 'Monday', new Date(2015,7,17,9,00), new Date(2015,7,17,11,30), { url: '#' });
+
+
+			// var options = {
+			//     url: '#', // makes the event clickable
+			//     class: 'vip', // additional css class
+			//     data: { // each property will be added to the data-* attributes of the DOM node for this event
+			//       id: 4,
+			//       ticketType: 'VIP'
+			//     },
+			//     onClick: function(event, timetable, clickEvent) {} // custom click handler, which is passed the event object and full timetable as context  
+			//   };
+			//   timetable.addEvent('Jam Session', 'Nile', new Date(2015,7,17,21,15), new Date(2015,7,17,23,30), options);
+
+
+			var renderer = new Timetable.Renderer(timetable);
+			renderer.draw('.timetable');
+
+		</script>
+
+	</div>
+
+	
+
+	<div class="top_border">
+		<p class="page_heading">Your Schedule</p>
+	</div>
+
+	<div class="side_boi">
+		<div class="button" id="add_button">
+			<p class="button_text" id="button_symbol">&#10011</p>
+			<p class="button_text">Add Task</p>
+		</div>
+
+		<div class="button" id="edit_button">
+			<p class="button_text" id="button_symbol">&#9998</p>
+			<p class="button_text">Edit Task</p>
+		</div>
+
+		<div class="button" id="next_week_button">
+			<p class="button_text" id="button_symbol">&#10140</p>
+			<p class="button_text">Next Week</p>
+		</div>
+	</div>
+
+	
+
+    
+
+</body>
+
+</html>

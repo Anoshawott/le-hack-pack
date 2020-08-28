@@ -10,7 +10,7 @@
 	left: 300px;
 }
 
-input[type="submit"] {
+input[type="button"] {
 	background-color: #74e8a8;
 	font-family: "Verdana";
 	font-size: 16px;
@@ -20,4 +20,10 @@ input[type="submit"] {
 	top: 410px;
 
 	width: 70%;
+}
+
+.submit_text {
+	position: absolute;
+	left: 864px;
+	top: 434px;
 }

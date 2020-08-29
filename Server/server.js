@@ -1,5 +1,5 @@
 const mas = require('../master')
-var master = new master.Master()
+var master = new mas.Master()
 
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -65,6 +65,7 @@ app.post('/api/fixed', function (req, res) {
 
     // {task1:{startime:900, endtime}, task2:{more stuff}, task3:{}}
     // var new_task = Master.preprocess(task_name ,start_time, prep_time, task_duration, day)
+    var task = {}
     var true_check = master.conflictCheck(task, fixed_tasks)
     if(true_check == null){ //is this supposed to be false or true???
         fixed_tasks[task_name] = {'start_time':start_time, 'day':day, 'prep_time':prep_time} 

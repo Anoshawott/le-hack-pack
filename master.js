@@ -1,3 +1,38 @@
+function parseTime(time){
+    time += ''
+    time = time.split(":");
+    var hours = parseInt(time[0]);
+    hours = hours*100;
+
+    var minutes = parseInt(time[1]);
+
+    time = hours+minutes;
+    return time;
+}
+
+function addTime(start_time, duration){
+    var start_parsed = parseTime(start_time);
+    var dur_parsed = parseTime(duration);
+    var dur_mins = dur_parsed % 100;
+    var dur_hours = dur_parsed - dur_mins;
+    dur_hours = dur_hours/100;
+    dur_mins = dur_mins + (dur_hours*60);
+
+    var start_min = start_parsed%100; //ONLY MINUTES
+    var new_hours = 0;
+    var added = start_min + dur_mins;
+
+    while(Math.floor(added/60) > 0){
+        new_hours += Math.floor(added/60);
+        added = added%60;
+    }
+    
+    new_hours = new_hours * 100;
+    // subtract start minutes because otherwise they get added twice
+    var end_time = start_parsed + new_hours + added - start_min;
+    return end_time;
+}
+
 class Master{
     // preprocess(task_name ,start_time, prep_time, task_duration, day){
     //     var start_time = new Date(start_time)
@@ -11,7 +46,7 @@ class Master{
     /*
     * Convert HH:MM string to int 0000 to 2359
     */
-    parseTime(time){
+    static parseTime(time){
         time = time.split(":");
         var hours = parseInt(time[0]);
         hours = hours*100;
@@ -25,9 +60,9 @@ class Master{
     /*
     * gets a start and a duration string in the form HH:MM
     */ 
-    addTime(start_time, duration){
-        var start_parsed = this.parseTime(start_time);
-        var dur_parsed = this.parseTime(duration);
+    static addTime(start_time, duration){
+        var start_parsed = parseTime(start_time);
+        var dur_parsed = parseTime(duration);
         var dur_mins = dur_parsed % 100;
         var dur_hours = dur_parsed - dur_mins;
         dur_hours = dur_hours/100;
@@ -49,8 +84,8 @@ class Master{
     }
 
     subtractTime(prep_time, start_time){
-        var start_parsed = this.parseTime(start_time);
-        var prep_parsed = this.parseTime(prep_time);
+        var start_parsed = parseTime(start_time);
+        var prep_parsed = parseTime(prep_time);
         var prep_mins = prep_parsed % 100;
         var prep_hours = prep_parsed - prep_mins;
         prep_hours = prep_hours/100;
@@ -96,16 +131,16 @@ class Master{
     * dictionary = dictionary of fixed_tasks
     */ 
     conflictCheck(task, dictionary){
-        var start_time = this.parseTime(task.start_time);
-        var end_time = this.addTime(task.start_time, task.duration);     
+        var start_time = parseTime(task.start_time);
+        var end_time = addTime(task.start_time, task.duration);     
 
         Object.keys(dictionary).forEach(function(key){
             // var dictionary[key]['start_time']
             var start_temp = dictionary[key]['start_time'];
             var duration_temp = dictionary[key]['duration'];
             
-            start_temp = this.parseTime(start_temp);
-            var end_temp = this.addTime(start_temp, duration);
+            start_temp = parseTime(start_temp);
+            var end_temp = addTime(start_temp, task.duration);
 
             if((start_temp >= start_time && start_temp<= end_time) ||
             (start_time >= start_temp && start_time<= end_temp))
@@ -187,7 +222,7 @@ class Master{
             var min_key = "";
             while(isEmpty(cur_task_allocation[key1]) == false){
                 Object.keys(key1).forEach(function(key2){
-                    var value = this.parseTime(cur_task_allocation[key1][key2]['start_time']);
+                    var value = parseTime(cur_task_allocation[key1][key2]['start_time']);
                     var key_of_value = cur_task_allocation[key1][key2]
                     if(value < min_val){
                         min_val = value;

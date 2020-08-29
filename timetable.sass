@@ -9,8 +9,8 @@
 $timetable-use-sticky-header: false !default
 
 // dimensions
-$timetable-hour-column-width: 96px !default
-$timetable-hour-row-height: 100px !default
+$timetable-hour-column-width: 3vw !default
+$timetable-hour-row-height: 10vh !default
 $timetable-heading-height: 30px !default
 
 // colors & decoration
@@ -64,8 +64,8 @@ $timetable-background-color: white !default
 .timetable
   display: flex
   align-items: stretch
-  width: 50%
-  max-width: 50%
+  width: 100%
+  max-width: 100%
   box-sizing: border-box
 
   *
@@ -171,7 +171,7 @@ $timetable-background-color: white !default
       &:not(:last-of-type)
         border-bottom: $timetable-entry-row-separator
       &:first-child .time-entry
-        height: $timetable-hour-row-height - 2px
+        height: $timetable-hour-row-height - 1vh
 
       &:after, &:before
         content: ""
@@ -191,7 +191,7 @@ $timetable-background-color: white !default
   .time-entry
     background-color: $timetable-entry-color
     transition: 200ms background-color
-    height: $timetable-hour-row-height - 1px
+    height: $timetable-hour-row-height - 1vh
     display: block
     position: absolute
     z-index: 2

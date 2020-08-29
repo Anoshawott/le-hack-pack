@@ -9,7 +9,7 @@ var timetable = new Timetable();
 timetable.setScope(6,23)
 
 // timetable.addLocations(['Monday', 'Madrid', 'Los Angeles', 'London', 'New York', 'Jakarta', 'Tokyo']);
-timetable.addLocations(['Monday', 'Tuesday', 'Wednesday', 'Thurday',
+timetable.addLocations(['Monday', 'Tuesday', 'Wednesday', 'Thursday',
                         'Friday', 'Saturday', "Sunday"]);
 
 timetable.addEvent('HACKATHON', 'Monday', new Date(2015,7,17,9,00), new Date(2015,7,17,11,30), { url: 'https://www.youtube.com/' });

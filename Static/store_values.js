@@ -24,8 +24,7 @@ function storeValues_nonfixed() {
 		}
 	}
 
-	if (
-	input_correct == true) {
+	if (input_correct == true) {
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", '/api/priority', true);
 		xhr.setRequestHeader('Content-Type', 'application/json');

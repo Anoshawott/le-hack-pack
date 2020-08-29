@@ -11,6 +11,7 @@ p {
 
 a {
 	color: inherit;
+	text-decoration: none;
 }
 
 .logo {
@@ -38,11 +39,14 @@ a {
 	font-size: 45px;
 
 	position: absolute;
-	top: 7px;
+	top: 0px;
 	left: 20px;	
 }
 
 .top_links {
+	font-size: 20px;
+	text-decoration: none;
+
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -53,7 +57,7 @@ a {
 	display: inline;
 
 	position: relative;
-	top: 58px;
+	top: 40px;
 	left: 300px;
 	padding-left: 100px;	
 }

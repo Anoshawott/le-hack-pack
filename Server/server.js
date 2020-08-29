@@ -11,11 +11,10 @@ const port = 4000
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../')));
+app.use(express.static(path.join(__dirname, '../Static/')));
 
 app.get('/', (req, res) => {
-    console.log(path.join(__dirname, 'send.html'))
-    res.sendFile(path.join(__dirname,'../', 'index.html'));
+    res.sendFile(path.join(__dirname,'../Static/', 'index.html'));
 })
 
 /*

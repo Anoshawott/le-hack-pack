@@ -32,9 +32,6 @@
 			<p>Name of Task: 
 				<input type="text" class="box_field" id="name"></p>
 				<br>
-			<p>Name of Subtask (Optional): 
-				<input type="text" class="box_field" id="subtask"></p>
-				<br>
 			<p>Due Date: 
 				<input type="date" class="box_field" id="due_date"></p>
 				<br>
@@ -49,7 +46,7 @@
 				<p><input type="radio" name="priority" id="priority" value="medium">Medium </p>
 				<p><input type="radio" name="priority" id="priority" value="low">Low </p>
 			</p>
-			<input onclick="storeValues()" type="button" class="button"><p class="submit_text">Submit</p>
+			<input onclick="storeValues_nonfixed()" type="button" class="button"><p class="submit_text">Submit</p>
 		</form>
 	</div>
 </body>

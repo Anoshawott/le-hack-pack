@@ -80,7 +80,7 @@ app.post('/api/fixed', function (req, res) {
          if(end_time > 2400){
            
            fixed_tasks[task_name]['end_time'] = 2359;
-           fixed_tasks[task_name]['duration'] = 2400 - master.parseTime(start_time);
+           fixed_tasks[task_name]['duration'] = 2400 - mas.Master.parseTime(start_time);
            //new task
            var duration = end_time - 2400;
            task_name = task_name + 'I';
@@ -111,7 +111,7 @@ app.post('/api/fixed', function (req, res) {
          if(end_time > 2400){
            
            fixed_tasks[task_name]['end_time'] = 2359;
-           fixed_tasks[task_name]['duration'] = 2400 - master.parseTime(start_time);
+           fixed_tasks[task_name]['duration'] = 2400 - mas.Master.parseTime(start_time);
            //new task
            var duration = end_time - 2400;
            task_name = task_name+'1';
@@ -134,7 +134,7 @@ app.post('/api/fixed', function (req, res) {
     
     // var response = master.registerFixedTask(req.body)
     // res.end(response)
-
+    console.log(fixed_tasks)
     res.send(fixed_tasks)
 })
 

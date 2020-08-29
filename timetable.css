@@ -12,11 +12,11 @@
   align-items: stretch;
   width: 100%;
   max-width: 100%;
-  box-sizing: border-box;
-  
+  box-sizing: border-box;  
 }
 .timetable {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 20px;
 }
 .timetable {
   position: relative;
@@ -72,7 +72,7 @@
   top: 0;
 }
 .timetable aside li, .timetable time li {
-  height: 100px;
+  height: 78px;
 }
 .timetable > section {
   flex: 3 0 auto;
@@ -80,14 +80,14 @@
   padding: 0 !important;
 }
 .timetable > section time {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: 'Verdana';
   display: block;
   width: 100%;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
 }
 .timetable > section > header {
-  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
   position: relative;
   top: 0;
   z-index: 3;
@@ -130,7 +130,7 @@
 .timetable ul.room-timeline li {
   position: relative;
   background-color: #F4F4F4;
-  height: 100px;
+  height: 78px;
 }
 .timetable ul.room-timeline li:nth-of-type(odd) {
   background-color: #FDFDFD;
@@ -145,7 +145,7 @@
   border-bottom: none;
 }
 .timetable ul.room-timeline li:first-child .time-entry {
-  height: 98px;
+  height: 77px;
 }
 .timetable ul.room-timeline li:after, .timetable ul.room-timeline li:before {
   content: "";
@@ -168,7 +168,7 @@
 .timetable .time-entry {
   background-color: #EC6A5E;
   transition: 200ms background-color;
-  height: 99px;
+  height: 77px;
   display: block;
   position: absolute;
   z-index: 2;

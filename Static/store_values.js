@@ -4,12 +4,6 @@ function storeValues_nonfixed() {
 	// Name of the task, e.g. Assignment
 	var name = document.getElementById('name').value;
 
-	// When the task is due by (day)
-	var due_date = document.getElementById('due_date').value;
-
-	// When the task is due by (time)
-	var due_time = document.getElementById('due_time').value;
-
 	// How long the task is expected to take in hours
 	var duration = document.getElementById('duration').value;
 
@@ -28,8 +22,6 @@ function storeValues_nonfixed() {
 	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.send(JSON.stringify({
 		'name': name,
-		'due_date': due_date,
-		'due_time': due_time,
 		'duration': duration,
 		'priority': priority
 	}));
@@ -41,11 +33,9 @@ function storeValues_fixed() {
 	// Name of the task, e.g. Assignment
 	var name = document.getElementById('name').value;
 
-	// When the task is due by (day)
-	var date = document.getElementById('date').value;
-
-	// When the task is due by (time)
-	var start_time = document.getElementById('start_time').value;
+	// When the task is done (day)
+	var day = document.getElementById('days').value;
+	day = parseInt(day);
 
 	// How long the task is expected to take in hours
 	var prep_duration = document.getElementById('prep_duration').value;
@@ -58,11 +48,10 @@ function storeValues_fixed() {
 	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.send(JSON.stringify({
 		'name': name,
-		'date': date,
-		'start_time': start_time,
+		'day': day,
 		'prep_duration': prep_duration,
 		'duration': duration
 	}));
 
-	window.alert(name + ' has been successfully added');
+	window.alert(day);
 }

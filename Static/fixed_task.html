@@ -34,17 +34,25 @@
 			<p>Name of Task: 
 				<input type="text" class="box_field" id="name"></p>
 				<br>
-			<p>Date: 
-				<input type="date" class="box_field" id="date"></p>
+			<p>Day:
+				<select id="days" class="box_field" name="days" size="1">
+				    <option value="1">Monday</option>
+				    <option value="2">Tuesday</option>
+				    <option value="3">Wednesday</option>
+				    <option value="4">Thursday</option>
+				    <option value="5">Friday</option>
+				    <option value="6">Saturday</option>
+				    <option value="7">Sunday</option>
+			  	</select></p>
 				<br>
 			<p>Start Time: 
-				<input type="time" value="HH:MM" class="box_field" id="start_time"></p>
+				<input type="time" class="box_field" id="start_time"></p>
 				<br>
 			<p>Length of Prep Time (hrs): 
-				<input type="text" class="box_field" id="prep_duration"></p>
+				<input type="text" value="HH:MM" class="box_field" id="prep_duration"></p>
 				<br>
 			<p>Length of Task (hrs): 
-				<input type="text" class="box_field" id="duration"></p>
+				<input type="text" value="HH:MM" class="box_field" id="duration"></p>
 				<br>
 			<input onclick="storeValues_fixed()" type="button" class="button"><p class="submit_text">Submit</p>
 		</form>

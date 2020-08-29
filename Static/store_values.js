@@ -10,7 +10,8 @@ function storeValues_nonfixed() {
 	var duration = document.getElementById('duration').value;
 
 	if (duration.charAt(2) != ':') {
-		window.alert('Please input the duration in HH:MM');
+		document.getElementById("message").innerHTML = "";
+		document.getElementById("message2").innerHTML = "Please input the duration in HH:MM";
 		input_correct = false;
 	}
 
@@ -34,7 +35,8 @@ function storeValues_nonfixed() {
 			'priority': priority
 		}));
 
-		window.alert(name + ' has been successfully added');
+		document.getElementById("message").innerHTML = name + " has been successfully added.";
+		document.getElementById("message2").innerHTML = "";
 	}
 }
 
@@ -57,7 +59,8 @@ function storeValues_fixed() {
 	var duration = document.getElementById('duration').value;
 
 	if (duration.charAt(2) != ':' || prep_duration.charAt(2) != ':') {
-		window.alert('Please input the duration in HH:MM');
+		document.getElementById("message").innerHTML = "";
+		document.getElementById("message2").innerHTML = "Please input the duration in HH:MM";
 		input_correct = false;
 	}
 
@@ -73,6 +76,7 @@ function storeValues_fixed() {
 			'duration': duration
 		}));
 
-		window.alert(name + ' has been successfully added');
+		document.getElementById("message").innerHTML = name + " has been successfully added.";
+		document.getElementById("message2").innerHTML = "";
 	}	
 }

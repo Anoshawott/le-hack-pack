@@ -38,3 +38,10 @@ input[type="button"] {
 	width: 87%;
 	height: 90%;
 }
+
+#message {
+	color: #74e8a8;
+}
+#message2 {
+	color: #e27d60;
+}

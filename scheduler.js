@@ -1,4 +1,5 @@
 import Time_Block from "time_block"
+import Fixed_Task from "fixed_tasks_class"
 import Task from "tasks_class"
 
 /*

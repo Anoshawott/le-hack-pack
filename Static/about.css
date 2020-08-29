@@ -1,3 +1,15 @@
+.pretti {
+	filter: blur(6px);
+	opacity: 0.4;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+}
+
 #back_button {
 	background-color: #e27d60;
 
@@ -14,7 +26,7 @@
 }
 
 .cool_line {
-	background-color: #74d3e8;
+	background-image: linear-gradient(#dec0eb, #74d3e8);
 
 	position: absolute;
 	left: 50px;
@@ -58,7 +70,7 @@
 	line-height: 50px;
 	font-family: 'Cedarville Cursive', cursive;
 	text-align: center;
-	color: #dec0eb;
+	color: #f7ad63;
 	font-size: 40px;
 }
 
@@ -139,9 +151,20 @@
 .p_name {
 	font-size: 30px;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
+	line-height: 0px;
 }
 
 .pic_text {
 	font-size: 16px;
 	line-height: 18px;
+}
+
+.code_lol {
+	position: absolute;
+	top: 118%;
+	left: -7%;
+
+	height: 500px;
+	width: 400px;
+	z-index: 12;
 }

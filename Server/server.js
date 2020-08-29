@@ -45,32 +45,37 @@ app.get('/api/calendarValues', function(req, res) {
 var fixed_tasks = {}
 
 app.post('/api/fixed', function (req, res) {
+    var task_name;
+    var day;
+    var start_time;
+    var prep_time;
+    var task_duration;
     Object.keys(req.body).forEach(function(key) {
         if(key == 'name'){
-            var task_name = req.body[key];
+            task_name = req.body[key];
         }
         else if(key == 'day'){ 
-            var day = req.body[key];
+            day = req.body[key];
         }
         else if(key == 'start_time'){
-            var start_time = req.body[key];
+            start_time = req.body[key];
         }
         else if(key == 'prep_duration'){
-            var prep_time = req.body[key];
+            prep_time = req.body[key];
         }
         else if(key == 'duration'){
-            var task_duration = req.body[key];
+            task_duration = req.body[key];
         }
     });
 
     // {task1:{startime:900, endtime}, task2:{more stuff}, task3:{}}
     // var new_task = Master.preprocess(task_name ,start_time, prep_time, task_duration, day)
-    var task = {}
+    var task = {'start_time': start_time, 'day': day, 'duration': task_duration, 'start_time': start_time, 'prep_time':prep_time}
     var true_check = master.conflictCheck(task, fixed_tasks)
     if(true_check == null){ //is this supposed to be false or true???
         fixed_tasks[task_name] = {'start_time':start_time, 'day':day, 'prep_time':prep_time} 
         
-         var end_time = master.addTime(start_time, duration);
+         var end_time = master.addTime(start_time, task_duration);
          if(end_time > 2400){
            
            fixed_tasks[task_name]['end_time'] = 2359;

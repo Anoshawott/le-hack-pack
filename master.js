@@ -11,7 +11,7 @@ class Master{
     /*
     * Convert HH:MM string to int 0000 to 2359
     */
-    parseTime(time){
+    static parseTime(time){
         time = time.split(":");
         var hours = parseInt(time[0]);
         hours = hours*100;
@@ -25,7 +25,7 @@ class Master{
     /*
     * gets a start and a duration string in the form HH:MM
     */ 
-    addTime(start_time, duration){
+    static addTime(start_time, duration){
         var start_parsed = this.parseTime(start_time);
         var dur_parsed = this.parseTime(duration);
         var dur_mins = dur_parsed % 100;
@@ -84,8 +84,8 @@ class Master{
             var start_temp = dictionary[key]['start_time'];
             var duration_temp = dictionary[key]['duration'];
             
-            start_temp = this.parseTime(start_temp);
-            var end_temp = this.addTime(start_temp, duration);
+            start_temp = parseTime(start_temp);
+            var end_temp = addTime(start_temp, duration);
 
             if((start_temp >= start_time && start_temp<= end_time) ||
             (start_time >= start_temp && start_time<= end_temp))

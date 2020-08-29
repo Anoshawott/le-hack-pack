@@ -218,20 +218,20 @@ class Master{
         }
         var sorted_allocation = {'1':{},'2':{},'3':{},'4':{},'5':{},'6':{},'7':{}}
         console.log(cur_task_allocation)
-        Object.keys(cur_task_allocation).forEach(function(key1){
+        Object.keys(cur_task_allocation).forEach(function(day){
             var min_val = 9999;
             var min_key = "";
-            while(Object.keys(cur_task_allocation[key1]).length != 0){
-                Object.keys(key1).forEach(function(key2){
-                    var value = parseTime(cur_task_allocation[key1][key2]['start_time']);
-                    var key_of_value = cur_task_allocation[key1][key2]
+            while(Object.keys(cur_task_allocation[day]).length != 0){
+                Object.keys(day).forEach(function(task){
+                    var value = parseTime(cur_task_allocation[day][task]['start_time']);
+                    var key_of_value = cur_task_allocation[day][task]
                     if(value < min_val){
                         min_val = value;
                         min_key = key_of_value;
                     }
                 });
-                sorted_allocation[key1][key_of_value] = cur_task_allocation[key1][key2]
-                delete cur_task_allocation[key1][key2]
+                sorted_allocation[day][key_of_value] = cur_task_allocation[day][task]
+                delete cur_task_allocation[day][task]
             }
         });
         return Array(time_per_day, sorted_allocation);

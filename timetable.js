@@ -13,6 +13,7 @@ timetable.addLocations(['Monday', 'Tuesday', 'Wednesday', 'Thurday',
                         'Friday', 'Saturday', "Sunday"]);
 
 timetable.addEvent('HACKATHON', 'Monday', new Date(2015,7,17,9,00), new Date(2015,7,17,11,30), { url: 'https://www.youtube.com/' });
+timetable.addEvent('MAKE BIG MONEY', 'Tuesday', new Date(2015,7,17,15,00), new Date(2015,7,17,19,30), { url: 'https://www.tesla.com/en_au' });
 
 
 // var options = {

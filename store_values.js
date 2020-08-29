@@ -4,9 +4,6 @@ function storeValues() {
 	// Name of the task, e.g. Assignment
 	var name = document.getElementById('name').value;
 
-	// Name of the subtask, e.g. Do research
-	var subtask = document.getElementById('subtask').value;
-
 	// When the task is due by (day)
 	var due_date = document.getElementById('due_date').value;
 

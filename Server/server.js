@@ -18,6 +18,12 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,'../', 'index.html'));
 })
 
+/*
+app.get('/api/calendarValues', function(req, res) {
+    res.send(master.generateCalendar())
+})
+*/
+
 app.post('/api/fixed', function (req, res) {
     console.log(req.body)
 

@@ -216,6 +216,7 @@ class Master{
             }); //cur_task_allocation = {1:{task1:{start, end}, task2:{start, end}}, 2:{task1:{start, end}}}
         }
         var sorted_allocation = {'1':{},'2':{},'3':{},'4':{},'5':{},'6':{},'7':{}}
+        console.log(cur_task_allocation)
         Object.keys(cur_task_allocation).forEach(function(key1){
             var min_val = 9999;
             var min_key = "";

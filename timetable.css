@@ -13,6 +13,10 @@
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  
+}
+.timetable {
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 .timetable {
   position: relative;
@@ -76,12 +80,14 @@
   padding: 0 !important;
 }
 .timetable > section time {
+  font-family: "Comic Sans MS", cursive, sans-serif;
   display: block;
   width: 100%;
   overflow-x: scroll;
   -webkit-overflow-scrolling: touch;
 }
 .timetable > section > header {
+  font-family: "Comic Sans MS", cursive, sans-serif;
   position: relative;
   top: 0;
   z-index: 3;

@@ -55,73 +55,103 @@ class Master{
 
         Object.keys(dictionary).forEach(function(key){
             // var dictionary[key]['start_time']
-            var start_temp;
-            if(key == 'start_time'){
-                start_temp = dictionary[key];
-            }
-            else if(key == 'duration'){
-                var duration_temp = dictionary[key];
-            }
+            var start_temp = dictionary[key]['start_time'];
+            var duration_temp = dictionary[key]['duration'];
+            
             start_temp = parseTime(start_temp);
             var end_temp = addTime(start_temp, duration);
 
             if((start_temp >= start_time && start_temp<= end_time) ||
-            (start_time >= start_temp && start_time<= end_temp)){
-                return true;
-            }
-        }
-        return false;
+            (start_time >= start_temp && start_time<= end_temp))
+                return key;
+        });
+        return null;
     }
 
     time_available(fixed_tasks, priority_tasks){
         var time_per_day = {};
+        var cur_task_allocation = {'1':{},'2':{},'3':{},'4':{},'5':{},'6':{},'7':{}};
         Object.keys(fixed_tasks).forEach(function(key){
             if (fixed_tasks[key]['day'] == '1'){
                 time_per_day['1'] += parseInt(fixed_tasks[key]['duration']);
+                cur_task_allocation['1'][key] = {'start_time':fixed_tasks[key]['start_time'], 'end_time':fixed_tasks[key]['end_time'], 'prep_time':fixed_tasks[key]['prep_time']};
             }
             else if (fixed_tasks[key]['day']=='2'){
                 time_per_day['2'] += parseInt(fixed_tasks[key]['duration']);
+                cur_task_allocation['2'][key] = {'start_time':fixed_tasks[key]['start_time'], 'end_time':fixed_tasks[key]['end_time'], 'prep_time':fixed_tasks[key]['prep_time']};
             }
             else if (fixed_tasks[key]['day']=='3'){
                 time_per_day['3'] += parseInt(fixed_tasks[key]['duration']);
+                cur_task_allocation['3'][key] = {'start_time':fixed_tasks[key]['start_time'], 'end_time':fixed_tasks[key]['end_time'], 'prep_time':fixed_tasks[key]['prep_time']};
             }
             else if (fixed_tasks[key]['day']=='4'){
                 time_per_day['4'] += parseInt(fixed_tasks[key]['duration']);
+                cur_task_allocation['4'][key] = {'start_time':fixed_tasks[key]['start_time'], 'end_time':fixed_tasks[key]['end_time'], 'prep_time':fixed_tasks[key]['prep_time']};
             }
             else if (fixed_tasks[key]['day']=='5'){
                 time_per_day['5'] += parseInt(fixed_tasks[key]['duration']);
+                cur_task_allocation['5'][key] = {'start_time':fixed_tasks[key]['start_time'], 'end_time':fixed_tasks[key]['end_time'], 'prep_time':fixed_tasks[key]['prep_time']};
             }
             else if (fixed_tasks[key]['day']=='6'){
                 time_per_day['6'] += parseInt(fixed_tasks[key]['duration']);
+                cur_task_allocation['6'][key] = {'start_time':fixed_tasks[key]['start_time'], 'end_time':fixed_tasks[key]['end_time'], 'prep_time':fixed_tasks[key]['prep_time']};
             }
             else if (fixed_tasks[key]['day']=='7'){
                 time_per_day['7'] += parseInt(fixed_tasks[key]['duration']);
+                cur_task_allocation['7'][key] = {'start_time':fixed_tasks[key]['start_time'], 'end_time':fixed_tasks[key]['end_time'], 'prep_time':fixed_tasks[key]['prep_time']};
             }
-        if(isEmpty(priority_tasks)){
+        });
+
+        // can we change following into a for loop?
+        if(isEmpty(priority_tasks)==false){
             Object.keys(priority_tasks).forEach(function(key){
                 if (priority_tasks[key]['day'] == '1'){
                     time_per_day['1'] += parseInt(priority_tasks[key]['duration']);
+                    cur_task_allocation['1'][key] = {'start_time':priority_tasks[key]['start_time'], 'end_time':priority_tasks[key]['end_time']};
                 }
                 else if (priority_tasks[key]['day']=='2'){
                     time_per_day['2'] += parseInt(priority_tasks[key]['duration']);
+                    cur_task_allocation['2'][key] = {'start_time':priority_tasks[key]['start_time'], 'end_time':priority_tasks[key]['end_time']};
                 }
                 else if (priority_tasks[key]['day']=='3'){
                     time_per_day['3'] += parseInt(priority_tasks[key]['duration']);
+                    cur_task_allocation['3'][key] = {'start_time':priority_tasks[key]['start_time'], 'end_time':priority_tasks[key]['end_time']};
                 }
                 else if (priority_tasks[key]['day']=='4'){
                     time_per_day['4'] += parseInt(priority_tasks[key]['duration']);
+                    cur_task_allocation['4'][key] = {'start_time':priority_tasks[key]['start_time'], 'end_time':priority_tasks[key]['end_time']};
                 }
                 else if (priority_tasks[key]['day']=='5'){
                     time_per_day['5'] += parseInt(priority_tasks[key]['duration']);
+                    cur_task_allocation['5'][key] = {'start_time':priority_tasks[key]['start_time'], 'end_time':priority_tasks[key]['end_time']};
                 }
                 else if (priority_tasks[key]['day']=='6'){
                     time_per_day['6'] += parseInt(priority_tasks[key]['duration']);
+                    cur_task_allocation['6'][key] = {'start_time':priority_tasks[key]['start_time'], 'end_time':priority_tasks[key]['end_time']};
                 }
                 else if (priority_tasks[key]['day']=='7'){
                     time_per_day['7'] += parseInt(priority_tasks[key]['duration']);
+                    cur_task_allocation['7'][key] = {'start_time':priority_tasks[key]['start_time'], 'end_time':priority_tasks[key]['end_time']};
                 }
-        }
-        return time_per_day;
+        }); //cur_task_allocation = {1:{task1:{start, end}, task2:{start, end}}, 2:{task1:{start, end}}}
+        var min_val = 9999;
+        var min_key = "";
+        var sorted_allocation = {'1':{},'2':{},'3':{},'4':{},'5':{},'6':{},'7':{}}
+        Object.keys(cur_task_allocation).forEach(function(key1){
+            while(isEmpty(cur_task_allocation[key1]) == false){
+                Object.keys(key1).forEach(function(key2){
+                    var value = parseTime(cur_task_allocation[key1][key2]['start_time']);
+                    var key_of_value = cur_task_allocation[key1][key2]
+                    if(value < min_val){
+                        min_val = value;
+                        min_key = key_of_value;
+                    }
+                });
+                sorted_allocation[key1][key_of_value] = cur_task_allocation[key1][key2]
+                delete cur_task_allocation[key1][key2]
+            }
+        });
+        return Array(time_per_day, sorted_allocation);
     }
 
     timetable_assignment(priority, task_duration, fixed_tasks, priority_tasks){

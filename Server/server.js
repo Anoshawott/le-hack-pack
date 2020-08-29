@@ -65,13 +65,10 @@ app.post('/api/fixed', function (req, res) {
 
     // {task1:{startime:900, endtime}, task2:{more stuff}, task3:{}}
     // var new_task = Master.preprocess(task_name ,start_time, prep_time, task_duration, day)
-    var true_check = conflictCheck()
-    if(true_check[0] == false){ //is this supposed to be false or true???
-        fixed_tasks[task_name] = {'start_time':start_time, 'day':day}
-        // fixed_tasks[task_name]['name'] = name;
-        // fixed_tasks[task_name]['start_time'] = start_time;
-        // fixed_tasks[task_name]['day'] = day;
-
+    var true_check = conflictCheck(task, fixed_tasks)
+    if(true_check == null){ //is this supposed to be false or true???
+        fixed_tasks[task_name] = {'start_time':start_time, 'day':day, 'prep_time':prep_time} 
+        
          var end_time = addTime(start_time, duration);
          if(end_time > 2400){
            
@@ -94,7 +91,36 @@ app.post('/api/fixed', function (req, res) {
         //fixed_tasks['end_time'] = end_time //original code, uncomment if my stuffs broken
         }
     else {
-        res.end("")
+        // res.end("Inserting this task would result in another one being overwritten, would you like to continue?");
+        //If continue
+        // OVERWRITING
+        delete fixed_tasks.true_check;
+        fixed_tasks[task_name] = {'start_time':start_time, 'day':day, 'prep_time':prep_time};
+        
+        fixed_tasks[task_name] = {'start_time':start_time, 'day':day, 'prep_time':prep_time} 
+        
+         var end_time = addTime(start_time, duration);
+         if(end_time > 2400){
+           
+           fixed_tasks[task_name]['end_time'] = 2359;
+           fixed_tasks[task_name]['duration'] = 2400 - parseTime(start_time);
+           //new task
+           var duration = end_time - 2400;
+           fixed_tasks[task_name+1]['task_name'] = task_name;
+           fixed_tasks[task_name+1]['day'] = day++;
+           fixed_tasks[task_name+1]['start_time'] = start_time;
+           fixed_tasks[task_name+1]['duration'] = durations; 
+           end_time = addTime(0000, duration);
+           fixed_tasks[task_name+1]['end_time'] = end_time;
+        }
+        else {
+            fixed_tasks[task_name]['end_time'] = end_time
+            fixed_tasks[task_name]['duration'] = task_duration 
+        }
+
+
+        //If discard
+        return
     }
     
     // var response = master.registerFixedTask(req.body)

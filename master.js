@@ -269,7 +269,7 @@ class Master{
                     Object.keys(day).forEach(function(inter){
                         var duration = intervals[day][inter]['duration']
                         if(duration <= 300){
-                            
+
                         }
                     });
                 });
@@ -281,14 +281,14 @@ class Master{
                 
                 // iterate through priority task list
                 
-                Object.keys(priority_tasks.forEach(function(key) {
-                    if (priority_tasks[key]['priority'] < priority) {
-                        // found a task with a lower priority
-                        // print to website?
-                    }
+                // Object.keys(priority_tasks.forEach(function(key) {
+                //     if (priority_tasks[key]['priority'] < priority) {
+                //         // found a task with a lower priority
+                //         // print to website?
+                //     }
 
                     
-                }
+                
 
             }
         }

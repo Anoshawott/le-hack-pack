@@ -27,3 +27,7 @@ input[type="button"] {
 	left: 864px;
 	top: 434px;
 }
+
+#submit {
+	width: 95%;
+}

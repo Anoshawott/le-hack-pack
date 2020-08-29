@@ -268,7 +268,9 @@ class Master{
                 Object.keys(intervals).forEach(function(day){
                     Object.keys(day).forEach(function(inter){
                         var duration = intervals[day][inter]['duration']
-                        if(duration <= 300)
+                        if(duration <= 300){
+                            
+                        }
                     });
                 });
             }  

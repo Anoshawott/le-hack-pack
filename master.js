@@ -183,7 +183,7 @@ class Master{
         });
 
         // can we change following into a for loop?
-        if(priority_tasks.isEmpty()==false){
+        if(Object.keys(priority_tasks).length == 0){
             Object.keys(priority_tasks).forEach(function(key){
                 if (priority_tasks[key]['day'] == '1'){
                     time_per_day['1'] += parseInt(priority_tasks[key]['duration']);
@@ -219,7 +219,7 @@ class Master{
         Object.keys(cur_task_allocation).forEach(function(key1){
             var min_val = 9999;
             var min_key = "";
-            while(cur_task_allocation[key1].isEmpty() == false){
+            while(Object.keys(cur_task_allocation[key1]).length == 0){
                 Object.keys(key1).forEach(function(key2){
                     var value = parseTime(cur_task_allocation[key1][key2]['start_time']);
                     var key_of_value = cur_task_allocation[key1][key2]

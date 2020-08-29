@@ -60,7 +60,7 @@ Class Scheduler(){
     Time_Block need[] = [];
 
 
-    while(to_schedule.end_time>=temp.end_time){
+    while((to_schedule.start_time + to_schedule.duration) >=temp.end_time){
       need.push(temp);
       i++;
       temp = time_slots[i];

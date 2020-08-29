@@ -69,6 +69,26 @@ class Master{
         return prep_start;
     }
 
+    findTimeLength(start, end){
+        var parsed_start = parseTime(start);
+        var parsed_end = parseTime(end);
+        
+        var start_mins = parsed_start%100;
+        var end_mins = parsed_end%100;
+        var start_hours = parsed_start - start_mins;
+        var end_hours = parsed_end - end_mins;
+
+        var hours_change = 0;
+        
+        var mins = end_mins - start_mins;
+        while(mins<0){
+            hours_change--;
+            mins = 60+mins;
+        }
+        var tot_hours = end_hours - start_hours + (hours_change * 100);
+        return tot_hours + mins;
+    }
+
     /*
     * Checks a new fixed task vs the dictionary to ensure we have no
     * clashes
@@ -198,24 +218,45 @@ class Master{
                             else{
                                 var end_int = time_left[1][key1][key2]['start_time'];
                             }
-                            // var int_dur = parseTime(time_left[1][key1][key2]['start_time']); 
+                            var int_dur = findTimeLength(times[-1], end_int); 
                             // ADD SUBTRACT FUNCTION HERE TO GET INTERVAL DURATION VAR ABOVE... 
                             intervals[key1][count] = {'start_time':times[-1], 'duration':int_dur};
                             count++
                         }
                         else{
+                            
                             times.push(time_left[1][key1][key2]['end_time'])
                             count++
                         }
                     });
                 });
+                Object.keys(intervals).forEach(function(day){
+                    Object.keys(day).forEach(function(inter){
+                        var duration = intervals[day][inter]['duration']
+                        if(duration <= 300)
+                    });
+                });
             }  
             else{
-                //second app.post for conflict resolution...will need pratham to help me
+                //second app.post for conflict resolution...will need pratham to help me    
+                // **thumbs up**
+                // app.post doesnt work here. It has to be in server.js
+                
+                // iterate through priority task list
+                
+                Object.keys(priority_tasks.forEach(function(key) {
+                    if (priority_tasks[key]['priority'] < priority) {
+                        // found a task with a lower priority
+                        // print to website?
+                    }
+
+                    
+                }
+
             }
         }
     }
-
+    
 
 }
 

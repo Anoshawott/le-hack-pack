@@ -76,12 +76,13 @@ app.post('/api/fixed', function (req, res) {
            fixed_tasks[task_name]['duration'] = 2400 - master.parseTime(start_time);
            //new task
            var duration = end_time - 2400;
-           fixed_tasks[task_name+1]['task_name'] = task_name;
-           fixed_tasks[task_name+1]['day'] = day++;
-           fixed_tasks[task_name+1]['start_time'] = start_time;
-           fixed_tasks[task_name+1]['duration'] = durations; 
+           task_name = task_name + 'I';
+           fixed_tasks[task_name]['task_name'] = task_name;
+           fixed_tasks[task_name]['day'] = day++;
+           fixed_tasks[task_name]['start_time'] = start_time;
+           fixed_tasks[task_name]['duration'] = durations; 
            end_time = master.addTime(0000, duration);
-           fixed_tasks[task_name+1]['end_time'] = end_time;
+           fixed_tasks[task_name]['end_time'] = end_time;
         }
         else {
             fixed_tasks[task_name]['end_time'] = end_time
@@ -106,12 +107,13 @@ app.post('/api/fixed', function (req, res) {
            fixed_tasks[task_name]['duration'] = 2400 - master.parseTime(start_time);
            //new task
            var duration = end_time - 2400;
-           fixed_tasks[task_name+1]['task_name'] = task_name;
-           fixed_tasks[task_name+1]['day'] = day++;
-           fixed_tasks[task_name+1]['start_time'] = start_time;
-           fixed_tasks[task_name+1]['duration'] = durations; 
+           task_name = task_name+'1';
+           fixed_tasks[task_name]['task_name'] = task_name;
+           fixed_tasks[task_name]['day'] = day++;
+           fixed_tasks[task_name]['start_time'] = start_time;
+           fixed_tasks[task_name]['duration'] = durations; 
            end_time = master.addTime(0000, duration);
-           fixed_tasks[task_name+1]['end_time'] = end_time;
+           fixed_tasks[task_name]['end_time'] = end_time;
         }
         else {
             fixed_tasks[task_name]['end_time'] = end_time

@@ -61,14 +61,20 @@ app.post('/api/fixed', function (req, res) {
         * if(end_time > 2400){
         *   fixed_tasks['end_time'] = 2359
         *   duration = end_time - 2400
-        *   make new task
+        *   
+        *   //new task
+        *   fixed_tasks['task_name'] = task_name
+        *   fixed_tasks['day'] = day++;
+        *   fixed_tasks['start_time'] = start_time
+        *   end_time = addTime(0000, duration)
         * }
         */ 
-        fixed_tasks['end_time'] = end_time
-    else{
+        //fixed_tasks['end_time'] = end_time //original code, uncomment if my stuffs broken
+        }
+    else {
         res.end("")
     }
-    }
+    
     // var response = master.registerFixedTask(req.body)
     // res.end(response)
 

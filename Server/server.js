@@ -1,3 +1,6 @@
+// import Master from '../master'
+// var master = new Master()
+
 const express = require('express')
 const bodyParser = require('body-parser')
 const  path = require('path')
@@ -17,11 +20,19 @@ app.get('/', (req, res) => {
 
 app.post('/api/fixed', function (req, res) {
     console.log(req.body)
+
+    // var response = master.registerFixedTask(req.body)
+    // res.end(response)
+
     res.end("yeah fixed")
 })
 
 app.post('/api/priority', function (req, res) {
     console.log(req.body)
+    
+    // var response = master.registerPriorityTask(req.body)
+    // res.end(response)
+
     res.end("yeah priority")
 })
 

@@ -135,7 +135,7 @@ app.post('/api/fixed', function (req, res) {
     // var response = master.registerFixedTask(req.body)
     // res.end(response)
 
-    res.end("yeah fixed")
+    res.end(fixed_tasks)
 })
 
 // Priority dictionary structure from website

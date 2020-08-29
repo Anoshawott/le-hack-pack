@@ -59,28 +59,38 @@ app.post('/api/fixed', function (req, res) {
             var prep_time = req.body[key];
         }
         else if(key == 'duration'){
-            var task_duration = req.body[key]
+            var task_duration = req.body[key];
         }
     });
+
+    // {task1:{startime:900, endtime}, task2:{more stuff}, task3:{}}
     // var new_task = Master.preprocess(task_name ,start_time, prep_time, task_duration, day)
     var true_check = conflictCheck()
-    if(true_check[0] == False){
-        fixed_tasks['task_name'] = task_name
-        fixed_tasks['day'] = day
-        fixed_tasks['start_time'] = start_time
-        /*
-        * end_time = addTime(start_time, duration);
-        * if(end_time > 2400){
-        *   fixed_tasks['end_time'] = 2359
-        *   duration = end_time - 2400
-        *   
-        *   //new task
-        *   fixed_tasks['task_name'] = task_name
-        *   fixed_tasks['day'] = day++;
-        *   fixed_tasks['start_time'] = start_time
-        *   end_time = addTime(0000, duration)
-        * }
-        */ 
+    if(true_check[0] == false){ //is this supposed to be false or true???
+        fixed_tasks[task_name] = {'start_time':start_time, 'day':day}
+        // fixed_tasks[task_name]['name'] = name;
+        // fixed_tasks[task_name]['start_time'] = start_time;
+        // fixed_tasks[task_name]['day'] = day;
+
+         var end_time = addTime(start_time, duration);
+         if(end_time > 2400){
+           
+           fixed_tasks[task_name]['end_time'] = 2359;
+           fixed_tasks[task_name]['duration'] = 2400 - parseTime(start_time);
+           //new task
+           var duration = end_time - 2400;
+           fixed_tasks[task_name+1]['task_name'] = task_name;
+           fixed_tasks[task_name+1]['day'] = day++;
+           fixed_tasks[task_name+1]['start_time'] = start_time;
+           fixed_tasks[task_name+1]['duration'] = durations; 
+           end_time = addTime(0000, duration);
+           fixed_tasks[task_name+1]['end_time'] = end_time;
+        }
+        else {
+            fixed_tasks[task_name]['end_time'] = end_time
+            fixed_tasks[task_name]['duration'] = task_duration 
+        }
+         
         //fixed_tasks['end_time'] = end_time //original code, uncomment if my stuffs broken
         }
     else {
@@ -105,13 +115,13 @@ app.post('/api/priority', function (req, res) {
             var task_name = req.body[key];
         }
         else if(key == 'duration'){
-            var task_duration = req.body[key]
+            var task_duration = req.body[key];
         }
         else if(key == 'priority'){
-            var prep_time = req.body[key];
+            var priority = req.body[key];
         }
     });
-
+    timetable_assignment(priority, task_duration, fixed_tasks)
     res.end("yeah priority")
 })
 

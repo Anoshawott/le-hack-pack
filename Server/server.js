@@ -50,6 +50,7 @@ app.post('/api/fixed', function (req, res) {
     var start_time;
     var prep_time;
     var task_duration;
+    console.log(req.body)
     Object.keys(req.body).forEach(function(key) {
         if(key == 'name'){
             task_name = req.body[key];
@@ -142,6 +143,7 @@ app.post('/api/fixed', function (req, res) {
 
 var priority_tasks = {}
 app.post('/api/priority', function (req, res) {
+    console.log(req.body)
     Object.keys(req.body).forEach(function(key) {
         if(key == 'name'){
             var task_name = req.body[key];
@@ -153,7 +155,7 @@ app.post('/api/priority', function (req, res) {
             var priority = req.body[key];
         }
     });
-    timetable_assignment(priority, task_duration, fixed_tasks)
+    master.timetable_assignment(priority, task_duration, fixed_tasks)
     res.end("yeah priority")
 })
 

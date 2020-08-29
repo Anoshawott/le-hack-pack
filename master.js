@@ -49,8 +49,8 @@ class Master{
     }
 
     subtractTime(prep_time, start_time){
-        var start_parsed = this.parseTime(start_time);
-        var prep_parsed = this.parseTime(prep_time);
+        var start_parsed = parseTime(start_time);
+        var prep_parsed = parseTime(prep_time);
         var prep_mins = prep_parsed % 100;
         var prep_hours = prep_parsed - prep_mins;
         prep_hours = prep_hours/100;
@@ -76,8 +76,8 @@ class Master{
     * dictionary = dictionary of fixed_tasks
     */ 
     conflictCheck(task, dictionary){
-        var start_time = this.parseTime(task.start_time);
-        var end_time = this.addTime(task.start_time, task.duration);     
+        var start_time = parseTime(task.start_time);
+        var end_time = addTime(task.start_time, task.duration);     
 
         Object.keys(dictionary).forEach(function(key){
             // var dictionary[key]['start_time']

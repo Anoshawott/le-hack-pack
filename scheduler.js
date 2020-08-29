@@ -8,7 +8,7 @@ import Task from "tasks_class"
  *    assign all tasks to an appropriate time slot starting by fixed tasks (Tasks which must be completed in a pre assigned period)
  */
 
-Class Scheduler(){
+class Scheduler {
   constructor(time_blocks, fixed_tasks){
     this.time_blocks = time_blocks; //Sorted list earliest->latest
     this.fixed_tasks = fixed_tasks;
@@ -36,7 +36,7 @@ Class Scheduler(){
   /*
   * 0 = clash, 1 = no clash
   */
-  function check_availability(slots_check, num_slots){
+  check_availability(slots_check, num_slots){
     for(var i = 0; i<num_slots; i++){
       if(slots_check[i].is_full == 1){
         return 0;
@@ -50,15 +50,15 @@ Class Scheduler(){
  * to_schedule = single fixed task
  * time_slots = list of all time slots
  */
-  function schedule_fixed_tasks(to_schedule, time_slots){
+  schedule_fixed_tasks(to_schedule, time_slots){
     var i = 0;
-    Time_Block temp = time_slots[i];
+    temp = time_slots[i];
     while(to_schedule.start_time>=temp.end_time){//Not in range
       i++;
       temp = time_slots[i];
     }
 
-    Time_Block need[] = [];
+    need = [];
 
 
     while((to_schedule.start_time + to_schedule.duration) >=temp.end_time){
@@ -84,9 +84,9 @@ Class Scheduler(){
 
   }
 
-  function create_schedule(){
+  create_schedule(){
     //Fixed tasks first
-    for(var i = 0; i<this.fixed_tasks.length, i++){
+    for(var i = 0; i<this.fixed_tasks.length; i++) {
         schedule_fixed_tasks(this.fixed_tasks[i], this.time_slots);
     }
   }

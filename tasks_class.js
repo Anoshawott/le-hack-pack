@@ -1,4 +1,4 @@
-Class Task{
+class Task{
   constructor(name, priority, due_date, is_continuous, is_fixed, start_time){
     this.name = name; //Name of task
     this.priority = priority; //Priority rank

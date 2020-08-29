@@ -22,6 +22,18 @@ function storeValues_nonfixed() {
 			break;
 		}
 	}
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", '/api', true);
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify({
+		'name': name,
+		'due_date': due_date,
+		'due_time': due_time,
+		'duration': duration,
+		'priority': priority
+	}));
+
 	window.alert(name + ' has been successfully added');
 }
 
@@ -40,6 +52,17 @@ function storeValues_fixed() {
 
 	// How long the task is expected to take in hours
 	var duration = document.getElementById('duration').value;
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", '/api', true);
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify({
+		'name': name,
+		'date': date,
+		'start_time': start_time,
+		'prep_duration': prep_duration,
+		'duration': duration
+	}));
 
 	window.alert(name + ' has been successfully added');
 }

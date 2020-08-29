@@ -35,6 +35,7 @@ function storeValues_fixed() {
 
 	// When the task is done (day)
 	var day = document.getElementById('days').value;
+	day = parseInt(day);
 
 	// How long the task is expected to take in hours
 	var prep_duration = document.getElementById('prep_duration').value;
@@ -52,5 +53,5 @@ function storeValues_fixed() {
 		'duration': duration
 	}));
 
-	window.alert(name + ' has been successfully added');
+	window.alert(day);
 }

@@ -36,6 +36,9 @@ function storeValues_fixed() {
 	var start_time = document.getElementById('start_time').value;
 
 	// How long the task is expected to take in hours
+	var prep_duration = document.getElementById('prep_duration').value;
+
+	// How long the task is expected to take in hours
 	var duration = document.getElementById('duration').value;
 
 	window.alert(name + ' has been successfully added');

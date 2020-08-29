@@ -13,6 +13,13 @@ a {
 	color: inherit;
 }
 
+.logo {
+	position: absolute;
+	right: 30px;
+	height: 130px;
+	width: 130px;
+}
+
 .top_border {
 	background-color: #f1f1f3;
 

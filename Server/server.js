@@ -17,6 +17,18 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,'../Static/', 'index.html'));
 })
 
+app.get('/schedule-task', (req, res) => {
+    res.sendFile(path.join(__dirname,'../Static/', 'fixed_task.html'));
+})
+
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname,'../Static/', 'about.html'));
+})
+
+app.get('/add-task', (req, res) => {
+    res.sendFile(path.join(__dirname,'../Static/', '/add_task.html'));
+})
+
 /*
 app.get('/api/calendarValues', function(req, res) {
     res.send(master.generateCalendar())
@@ -61,14 +73,20 @@ app.post('/api/fixed', function (req, res) {
         * if(end_time > 2400){
         *   fixed_tasks['end_time'] = 2359
         *   duration = end_time - 2400
-        *   make new task
+        *   
+        *   //new task
+        *   fixed_tasks['task_name'] = task_name
+        *   fixed_tasks['day'] = day++;
+        *   fixed_tasks['start_time'] = start_time
+        *   end_time = addTime(0000, duration)
         * }
         */ 
-        fixed_tasks['end_time'] = end_time
-    else{
+        //fixed_tasks['end_time'] = end_time //original code, uncomment if my stuffs broken
+        }
+    else {
         res.end("")
     }
-    }
+    
     // var response = master.registerFixedTask(req.body)
     // res.end(response)
 

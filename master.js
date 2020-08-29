@@ -150,7 +150,6 @@ class Master{
     }
 
     time_available(fixed_tasks, priority_tasks){
-        var time_per_day = {};
         var cur_task_allocation = {'1':{},'2':{},'3':{},'4':{},'5':{},'6':{},'7':{}};
         Object.keys(fixed_tasks).forEach(function(key){
             if (fixed_tasks[key]['day'] == '1'){

@@ -160,7 +160,7 @@ app.post('/api/priority', function (req, res) {
             priority = req.body[key];
         }
     });
-    master.timetable_assignment(priority, task_duration, fixed_tasks)
+    master.timetable_assignment(priority, task_duration, fixed_tasks, priority_tasks)
     res.end("yeah priority")
 })
 

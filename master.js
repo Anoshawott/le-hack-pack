@@ -221,7 +221,7 @@ class Master{
         Object.keys(cur_task_allocation).forEach(function(key1){
             var min_val = 9999;
             var min_key = "";
-            while(Object.keys(cur_task_allocation[key1]).length == 0){
+            while(Object.keys(cur_task_allocation[key1]).length != 0){
                 Object.keys(key1).forEach(function(key2){
                     var value = parseTime(cur_task_allocation[key1][key2]['start_time']);
                     var key_of_value = cur_task_allocation[key1][key2]

@@ -76,7 +76,7 @@ app.post('/api/fixed', function (req, res) {
     if(true_check == null){ //is this supposed to be false or true???
         fixed_tasks[task_name] = {'start_time':start_time, 'day':day, 'prep_time':prep_time} 
         
-         var end_time = master.addTime(start_time, task_duration);
+         var end_time = mas.Master.addTime(start_time, task_duration);
          if(end_time > 2400){
            
            fixed_tasks[task_name]['end_time'] = 2359;
@@ -87,7 +87,7 @@ app.post('/api/fixed', function (req, res) {
            fixed_tasks[task_name+1]['day'] = day++;
            fixed_tasks[task_name+1]['start_time'] = start_time;
            fixed_tasks[task_name+1]['duration'] = durations; 
-           end_time = master.addTime(0000, duration);
+           end_time = mas.Master.addTime(0000, duration);
            fixed_tasks[task_name+1]['end_time'] = end_time;
         }
         else {

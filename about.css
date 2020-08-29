@@ -129,14 +129,19 @@
 }
 
 .textbox {
-	width: 500px;
+	width: 800px;
 	height: 0px;
 	position: relative;
-	top: -130px;
+	top: -118px;
 	left: 330px;
 }
 
 .p_name {
 	font-size: 30px;
 	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.pic_text {
+	font-size: 16px;
+	line-height: 18px;
 }

@@ -138,6 +138,10 @@ app.post('/api/fixed', function (req, res) {
     res.send(fixed_tasks)
 })
 
+app.get('/api/getCalendar', (req, res) => {
+    res.json(fixed_tasks)
+})
+
 // Priority dictionary structure from website
 // 'name': name,
 // 'duration': duration,

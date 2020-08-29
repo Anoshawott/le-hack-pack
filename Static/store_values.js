@@ -76,6 +76,7 @@ function storeValues_fixed() {
 			'duration': duration
 		}));
 
+
 		document.getElementById("message").innerHTML = name + " has been successfully added.";
 		document.getElementById("message2").innerHTML = "";
 	}	

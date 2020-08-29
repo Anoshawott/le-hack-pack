@@ -4,7 +4,24 @@
 
 
 // actual code implemented
+const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday',
+'Friday', 'Saturday', 'Sunday']
 var timetable = new Timetable();
+
+fetch('/api/getCalendar')
+.then(response => response.json())
+.then(data => {
+    console.log(data)
+    Object.keys(data).forEach((taskname)=>{
+        console.log(data[taskname])
+        timetable.addEvent(taskname,
+        days[data[taskname].day],
+        new Date(2015, 7, 17, parseInt(data[taskname].start_time), parseInt(data[taskname].start_time.substring(3))),
+        new Date(2015, 7, 17, Math.floor(data[taskname].end_time/100), data[taskname].end_time%100))
+    })
+});
+
+window.alert('fetch done')
 
 timetable.setScope(6,23)
 

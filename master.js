@@ -48,7 +48,12 @@ class Master{
         return end_time;
     }
 
-
+    /*
+    * Checks a new fixed task vs the dictionary to ensure we have no
+    * clashes
+    * task = fixeed_task
+    * dictionary = dictionary of fixed_tasks
+    */ 
     conflictCheck(task, dictionary){
         var start_time = parseTime(task.start_time);
         var end_time = addTime(task.start_time, task.duration);     
@@ -134,10 +139,10 @@ class Master{
                     cur_task_allocation['7'][key] = {'start_time':priority_tasks[key]['start_time'], 'end_time':priority_tasks[key]['end_time']};
                 }
         }); //cur_task_allocation = {1:{task1:{start, end}, task2:{start, end}}, 2:{task1:{start, end}}}
-        var min_val = 9999;
-        var min_key = "";
         var sorted_allocation = {'1':{},'2':{},'3':{},'4':{},'5':{},'6':{},'7':{}}
         Object.keys(cur_task_allocation).forEach(function(key1){
+            var min_val = 9999;
+            var min_key = "";
             while(isEmpty(cur_task_allocation[key1]) == false){
                 Object.keys(key1).forEach(function(key2){
                     var value = parseTime(cur_task_allocation[key1][key2]['start_time']);
@@ -159,7 +164,12 @@ class Master{
         var time_left = time_available(fixed_tasks, priority_tasks)
         if(priority == '1'){
             var priority_1_time = time_left['1'] + time_left['2'] + time_left['3'];
-            var available_slots = 
+            if(priority_1_time > task_duration){
+                
+            }  
+            else{
+                //second app.post for conflict resolution...will need pratham to help me
+            }
         }
     }
 

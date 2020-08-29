@@ -25,7 +25,6 @@ function storeValues_nonfixed() {
 	}
 
 	if (
-	console.log(xhr.responseText)
 	input_correct == true) {
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", '/api/priority', true);

@@ -24,7 +24,7 @@ function storeValues_nonfixed() {
 	}
 
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", '/api', true);
+	xhr.open("POST", '/api/priority', true);
 	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.send(JSON.stringify({
 		'name': name,
@@ -54,7 +54,7 @@ function storeValues_fixed() {
 	var duration = document.getElementById('duration').value;
 
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", '/api', true);
+	xhr.open("POST", '/api/fixed', true);
 	xhr.setRequestHeader('Content-Type', 'application/json');
 	xhr.send(JSON.stringify({
 		'name': name,

@@ -15,9 +15,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,'../', 'index.html'));
 })
 
-app.post('/api', function (req, res) {
+app.post('/api/fixed', function (req, res) {
     console.log(req.body)
-    res.end("yeah")
+    res.end("yeah fixed")
+})
+
+app.post('/api/priority', function (req, res) {
+    console.log(req.body)
+    res.end("yeah priority")
 })
 
 app.listen(port, () => {

@@ -19,6 +19,7 @@ class Master{
         var minutes = parseInt(time[1]);
 
         time = hours+minutes;
+        return time;
     }
 
     /*
@@ -27,15 +28,32 @@ class Master{
     addTime(start_time, duration){
         var start_parsed = parseTime(start_time);
         var dur_parsed = parseTime(duration);
+        var dur_mins = dur_parsed % 100;
+        var dur_hours = dur_parsed - dur_mins;
+        dur_hours = dur_hours/100;
+        dur_mins = dur_mins + (dur_hours*60);
 
         var start_min = start_parsed%100; //ONLY MINUTES
-        
-        var added = start_min + dur_parsed;
-        var new_hours = Math.floor(added/60);
+        var new_hours = 0;
+        var added = start_min + dur_mins;
+
+        while(Math.floor(added/60) > 0){
+            new_hours += Math.floor(added/60);
+            added = added%60;
+        }
         
         new_hours = new_hours * 100;
-        added = added%60;
-        var end_time = start_parsed + new_hours + added;
+        // subtract start minutes because otherwise they get added twice
+        var end_time = start_parsed + new_hours + added - start_min;
+        return end_time;
     }
 
+    console.log(addTime('12:59', "00:30"));
+
+    conflictCheck()
+
+
 }
+
+var master 
+console.log(.addTime("12:59", "00:30"));

@@ -1,9 +1,9 @@
-// import Master from 'master'
-// var master = new Master()
+const mas = require('../master')
+var master = new master.Master()
 
 const express = require('express')
 const bodyParser = require('body-parser')
-const  path = require('path')
+const path = require('path')
 
 const app = express()
 const port = 4000
@@ -65,22 +65,22 @@ app.post('/api/fixed', function (req, res) {
 
     // {task1:{startime:900, endtime}, task2:{more stuff}, task3:{}}
     // var new_task = Master.preprocess(task_name ,start_time, prep_time, task_duration, day)
-    var true_check = conflictCheck(task, fixed_tasks)
+    var true_check = master.conflictCheck(task, fixed_tasks)
     if(true_check == null){ //is this supposed to be false or true???
         fixed_tasks[task_name] = {'start_time':start_time, 'day':day, 'prep_time':prep_time} 
         
-         var end_time = addTime(start_time, duration);
+         var end_time = master.addTime(start_time, duration);
          if(end_time > 2400){
            
            fixed_tasks[task_name]['end_time'] = 2359;
-           fixed_tasks[task_name]['duration'] = 2400 - parseTime(start_time);
+           fixed_tasks[task_name]['duration'] = 2400 - master.parseTime(start_time);
            //new task
            var duration = end_time - 2400;
            fixed_tasks[task_name+1]['task_name'] = task_name;
            fixed_tasks[task_name+1]['day'] = day++;
            fixed_tasks[task_name+1]['start_time'] = start_time;
            fixed_tasks[task_name+1]['duration'] = durations; 
-           end_time = addTime(0000, duration);
+           end_time = master.addTime(0000, duration);
            fixed_tasks[task_name+1]['end_time'] = end_time;
         }
         else {
@@ -99,18 +99,18 @@ app.post('/api/fixed', function (req, res) {
         
         fixed_tasks[task_name] = {'start_time':start_time, 'day':day, 'prep_time':prep_time} 
         
-         var end_time = addTime(start_time, duration);
+         var end_time = master.addTime(start_time, duration);
          if(end_time > 2400){
            
            fixed_tasks[task_name]['end_time'] = 2359;
-           fixed_tasks[task_name]['duration'] = 2400 - parseTime(start_time);
+           fixed_tasks[task_name]['duration'] = 2400 - master.parseTime(start_time);
            //new task
            var duration = end_time - 2400;
            fixed_tasks[task_name+1]['task_name'] = task_name;
            fixed_tasks[task_name+1]['day'] = day++;
            fixed_tasks[task_name+1]['start_time'] = start_time;
            fixed_tasks[task_name+1]['duration'] = durations; 
-           end_time = addTime(0000, duration);
+           end_time = master.addTime(0000, duration);
            fixed_tasks[task_name+1]['end_time'] = end_time;
         }
         else {

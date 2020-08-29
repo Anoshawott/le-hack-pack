@@ -26,8 +26,8 @@ class Master{
     * gets a start and a duration string in the form HH:MM
     */ 
     addTime(start_time, duration){
-        var start_parsed = parseTime(start_time);
-        var dur_parsed = parseTime(duration);
+        var start_parsed = this.parseTime(start_time);
+        var dur_parsed = this.parseTime(duration);
         var dur_mins = dur_parsed % 100;
         var dur_hours = dur_parsed - dur_mins;
         dur_hours = dur_hours/100;
@@ -48,6 +48,27 @@ class Master{
         return end_time;
     }
 
+    subtractTime(prep_time, start_time){
+        var start_parsed = this.parseTime(start_time);
+        var prep_parsed = this.parseTime(prep_time);
+        var prep_mins = prep_parsed % 100;
+        var prep_hours = prep_parsed - prep_mins;
+        prep_hours = prep_hours/100;
+        prep_mins = prep_mins + (prep_hours*60);
+
+        var start_min = start_parsed%100;
+        var hours_change = 0;
+        
+        var new_mins = start_min - prep_mins;
+        while(new_mins < 0){
+            hours_change--;
+            new_mins = 60+new_mins;
+        }
+        hours_change = hours_change*100;
+        var prep_start = (start_parsed - start_min) + hours_change + new_mins;
+        return prep_start;
+    }
+
     /*
     * Checks a new fixed task vs the dictionary to ensure we have no
     * clashes
@@ -55,16 +76,16 @@ class Master{
     * dictionary = dictionary of fixed_tasks
     */ 
     conflictCheck(task, dictionary){
-        var start_time = parseTime(task.start_time);
-        var end_time = addTime(task.start_time, task.duration);     
+        var start_time = this.parseTime(task.start_time);
+        var end_time = this.addTime(task.start_time, task.duration);     
 
         Object.keys(dictionary).forEach(function(key){
             // var dictionary[key]['start_time']
             var start_temp = dictionary[key]['start_time'];
             var duration_temp = dictionary[key]['duration'];
             
-            start_temp = parseTime(start_temp);
-            var end_temp = addTime(start_temp, duration);
+            start_temp = this.parseTime(start_temp);
+            var end_temp = this.addTime(start_temp, duration);
 
             if((start_temp >= start_time && start_temp<= end_time) ||
             (start_time >= start_temp && start_time<= end_temp))
@@ -138,14 +159,15 @@ class Master{
                     time_per_day['7'] += parseInt(priority_tasks[key]['duration']);
                     cur_task_allocation['7'][key] = {'start_time':priority_tasks[key]['start_time'], 'end_time':priority_tasks[key]['end_time']};
                 }
-        }); //cur_task_allocation = {1:{task1:{start, end}, task2:{start, end}}, 2:{task1:{start, end}}}
+            }); //cur_task_allocation = {1:{task1:{start, end}, task2:{start, end}}, 2:{task1:{start, end}}}
+        }
         var sorted_allocation = {'1':{},'2':{},'3':{},'4':{},'5':{},'6':{},'7':{}}
         Object.keys(cur_task_allocation).forEach(function(key1){
             var min_val = 9999;
             var min_key = "";
             while(isEmpty(cur_task_allocation[key1]) == false){
                 Object.keys(key1).forEach(function(key2){
-                    var value = parseTime(cur_task_allocation[key1][key2]['start_time']);
+                    var value = this.parseTime(cur_task_allocation[key1][key2]['start_time']);
                     var key_of_value = cur_task_allocation[key1][key2]
                     if(value < min_val){
                         min_val = value;
@@ -160,12 +182,33 @@ class Master{
     }
 
     timetable_assignment(priority, task_duration, fixed_tasks, priority_tasks){
-        
-        var time_left = time_available(fixed_tasks, priority_tasks)
+        var intervals = {'1':{},'2':{},'3':{},'4':{},'5':{},'6':{},'7':{}};
+        var time_left = this.time_available(fixed_tasks, priority_tasks)
         if(priority == '1'){
-            var priority_1_time = time_left['1'] + time_left['2'] + time_left['3'];
+            var priority_1_time = time_left[0]['1'] + time_left[0]['2'] + time_left[0]['3'];
             if(priority_1_time > task_duration){
-                
+                Object.keys(time_left[1]).forEach(function(key1){
+                    var count = 1;
+                    var times = [];
+                    Object.keys(key1).forEach(function(key2){
+                        if(count%2==0){
+                            if(!("prep_time" in time_left[1][key1][key2])==false){
+                                var end_int = this.subtractTime(time_left[1][key1][key2]['prep_time'], time_left[1][key1][key2]['start_time']);
+                            }
+                            else{
+                                var end_int = time_left[1][key1][key2]['start_time'];
+                            }
+                            // var int_dur = parseTime(time_left[1][key1][key2]['start_time']); 
+                            // ADD SUBTRACT FUNCTION HERE TO GET INTERVAL DURATION VAR ABOVE... 
+                            intervals[key1][count] = {'start_time':times[-1], 'duration':int_dur};
+                            count++
+                        }
+                        else{
+                            times.push(time_left[1][key1][key2]['end_time'])
+                            count++
+                        }
+                    });
+                });
             }  
             else{
                 //second app.post for conflict resolution...will need pratham to help me
@@ -176,8 +219,4 @@ class Master{
 
 }
 
-var master 
-console.log(addTime("12:59", "00:30"));
-
-
-console.log(addTime('12:59', "00:30"));
+exports.Master = Master;

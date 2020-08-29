@@ -9,9 +9,9 @@ import Task from "tasks_class"
  */
 
 Class Scheduler(){
-  constructor(time_blocks, tasks){
+  constructor(time_blocks, fixed_tasks){
     this.time_blocks = time_blocks; //Sorted list earliest->latest
-    this.tasks = tasks;
+    this.fixed_tasks = fixed_tasks;
   };
 
 
@@ -36,7 +36,7 @@ Class Scheduler(){
   /*
   * 0 = clash, 1 = no clash
   */
-  check_availability(slots_check, num_slots){
+  function check_availability(slots_check, num_slots){
     for(var i = 0; i<num_slots; i++){
       if(slots_check[i].is_full == 1){
         return 0;
@@ -50,7 +50,7 @@ Class Scheduler(){
  * to_schedule = single fixed task
  * time_slots = list of all time slots
  */
-  void schedule_fixed_tasks(to_schedule, time_slots){
+  function schedule_fixed_tasks(to_schedule, time_slots){
     var i = 0;
     Time_Block temp = time_slots[i];
     while(to_schedule.start_time>=temp.end_time){//Not in range
@@ -84,12 +84,10 @@ Class Scheduler(){
 
   }
 
-  void create_schedule(){
+  function create_schedule(){
     //Fixed tasks first
-    for(var i = 0; i<this.tasks.length, i++){
-      if(this.tasks[i].is_fixed == 1){
-        fixed_tasks(tasks[i]);
-      }
+    for(var i = 0; i<this.fixed_tasks.length, i++){
+        schedule_fixed_tasks(this.fixed_tasks[i], this.time_slots);
     }
   }
 

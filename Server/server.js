@@ -17,6 +17,18 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,'../Static/', 'index.html'));
 })
 
+app.get('/schedule-task', (req, res) => {
+    res.sendFile(path.join(__dirname,'../Static/', 'fixed_task.html'));
+})
+
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname,'../Static/', 'about.html'));
+})
+
+app.get('/add-task', (req, res) => {
+    res.sendFile(path.join(__dirname,'../Static/', '/add_task.html'));
+})
+
 /*
 app.get('/api/calendarValues', function(req, res) {
     res.send(master.generateCalendar())

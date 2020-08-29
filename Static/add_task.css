@@ -13,19 +13,17 @@
 input[type="button"] {
 	background-color: #74e8a8;
 	font-family: "Verdana";
-	font-size: 16px;
 
 	position: absolute;
 	left: 800px;
 	top: 410px;
-
-	width: 77%;
 }
 
 .submit_text {
 	position: absolute;
-	left: 864px;
-	top: 434px;
+	top: 472px;
+	left: 1188px;
+	font-size: 16px;
 }
 
 #submit {

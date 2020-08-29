@@ -85,10 +85,19 @@ a {
 	border-radius: 25px;
 
 	cursor: pointer;
+	border: none;
 }
 
 #add_button {
 	background-color: #e27d60;
+}
+
+#sub_button {
+	background-color: #74e8a8;
+
+	position: absolute;
+	top: 444px;
+	left: 1168px;
 }
 
 #edit_button {
@@ -106,6 +115,10 @@ a {
 }
 
 #add_button:hover {
+	background-color: #f7ad63;
+}
+
+#sub_button:hover {
 	background-color: #f7ad63;
 }
 

@@ -53,5 +53,5 @@ function storeValues_fixed() {
 		'duration': duration
 	}));
 
-	window.alert(day);
+	window.alert(name + ' has been successfully added');
 }

@@ -36,6 +36,8 @@ class Scheduler {
   /*
   * 0 = clash, 1 = no clash
   */
+
+  
   check_availability(slots_check, num_slots){
     for(var i = 0; i<num_slots; i++){
       if(slots_check[i].is_full == 1){

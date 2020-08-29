@@ -73,6 +73,8 @@ function storeValues_fixed() {
 			'duration': duration
 		}));
 
+		console.log(xhr.response)
+
 		window.alert(name + ' has been successfully added');
 	}	
 }

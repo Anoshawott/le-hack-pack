@@ -57,6 +57,13 @@ class Master{
         return time;
     }
 
+    static reformatTime(time){
+        while(time>2400){
+            time-2400;
+        }
+        return time;
+    }
+
     static timeToStr(time){
         var mins = time%100;
         var hours = time-mins;

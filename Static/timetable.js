@@ -4,16 +4,21 @@
 
 
 // actual code implemented
-const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday',
+const days = ['mehPlaceholder', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
 'Friday', 'Saturday', 'Sunday']
 var timetable = new Timetable();
+
+// timetable.setScope(6,23)
+
+// timetable.addLocations(['Monday', 'Madrid', 'Los Angeles', 'London', 'New York', 'Jakarta', 'Tokyo']);
+timetable.addLocations(['Monday', 'Tuesday', 'Wednesday', 'Thursday',
+                        'Friday', 'Saturday', 'Sunday']);
 
 fetch('/api/getCalendar')
 .then(response => response.json())
 .then(data => {
-    console.log(data)
     Object.keys(data).forEach((taskname)=>{
-        console.log(data[taskname])
+        console.log(days[data[taskname].day])
         timetable.addEvent(taskname,
         days[data[taskname].day],
         new Date(2015, 7, 17, parseInt(data[taskname].start_time), parseInt(data[taskname].start_time.substring(3))),
@@ -21,17 +26,11 @@ fetch('/api/getCalendar')
     })
 });
 
-window.alert('fetch done')
+console.log(timetable.events)
 
-timetable.setScope(6,23)
-
-// timetable.addLocations(['Monday', 'Madrid', 'Los Angeles', 'London', 'New York', 'Jakarta', 'Tokyo']);
-timetable.addLocations(['Monday', 'Tuesday', 'Wednesday', 'Thursday',
-                        'Friday', 'Saturday', "Sunday"]);
-
-timetable.addEvent('HACKATHON', 'Monday', new Date(2015,7,17,9,00), new Date(2015,7,17,11,30), { url: 'https://www.youtube.com/' });
-timetable.addEvent('MAKE BIG MONEY', 'Tuesday', new Date(2015,7,17,15,00), new Date(2015,7,17,19,30), { url: 'https://www.tesla.com/en_au' });
-timetable.addEvent('LOSE BIG MONEY', 'Wednesday', new Date(2015,7,17,11,00), new Date(2015,7,17,15,30), { url: 'https://bitcoin.org/en/' });
+// timetable.addEvent('HACKATHON', 'Monday', new Date(2015,7,17,9,00), new Date(2015,7,17,11,30), { url: 'https://www.youtube.com/' });
+// timetable.addEvent('MAKE BIG MONEY', 'Tuesday', new Date(2015,7,17,15,00), new Date(2015,7,17,19,30), { url: 'https://www.tesla.com/en_au' });
+// timetable.addEvent('LOSE BIG MONEY', 'Wednesday', new Date(2015,7,17,11,00), new Date(2015,7,17,15,30), { url: 'https://bitcoin.org/en/' });
 // timetable.addEvent('LOSE BIG MONEY', 'Wednesday', new Date(2015,7,17,10,00), new Date(2015,7,17,15,30), { url: 'https://bitcoin.org/en/' });
 
 

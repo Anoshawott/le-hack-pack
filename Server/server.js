@@ -73,22 +73,26 @@ app.post('/api/fixed', function (req, res) {
     // var new_task = Master.preprocess(task_name ,start_time, prep_time, task_duration, day)
     var task = {'start_time': start_time, 'day': day, 'duration': task_duration, 'start_time': start_time, 'prep_time':prep_time}
     var true_check = master.conflictCheck(task, fixed_tasks)
-    if(true_check == null){ //is this supposed to be false or true???
+    if(true_check == null){
         fixed_tasks[task_name] = {'start_time':start_time, 'day':day, 'prep_time':prep_time} 
         
          var end_time = mas.Master.addTime(start_time, task_duration);
          if(end_time > 2400){
            
+           var duration = mas.Master.findTimeLength(start_time, "23:59"); //might need to swap orders
            fixed_tasks[task_name]['end_time'] = 2359;
-           fixed_tasks[task_name]['duration'] = 2400 - mas.Master.parseTime(start_time);
-           //new task
-           var duration = end_time - 2400;
+           fixed_tasks[task_name]['duration'] = duration;
+           //look at var duration, shouldnt be using -, needs master.subtractTime
+           //var duration = end_time - 2400;
+           ///TASK 2
+
            task_name = task_name + 'I';
-           fixed_tasks[task_name]['task_name'] = task_name;
+           duration = mas.Master.subtractTime(task_duration, "23:59"); //?
+           fixed_tasks[task_name] = task_name;
            fixed_tasks[task_name]['day'] = day++;
-           fixed_tasks[task_name]['start_time'] = start_time;
-           fixed_tasks[task_name]['duration'] = durations; 
-           end_time = master.addTime(0000, duration);
+           fixed_tasks[task_name]['start_time'] = "00:00";
+           fixed_tasks[task_name]['duration'] = duration; 
+           end_time = master.addTime("00:00", duration);//gonn
            fixed_tasks[task_name]['end_time'] = end_time;
         }
         else {
@@ -114,11 +118,11 @@ app.post('/api/fixed', function (req, res) {
            fixed_tasks[task_name]['duration'] = 2400 - mas.Master.parseTime(start_time);
            //new task
            var duration = end_time - 2400;
-           task_name = task_name+'1';
-           fixed_tasks[task_name]['task_name'] = task_name;
+           task_name = task_name + 'I'
+           fixed_tasks[task_name] = task_name;
            fixed_tasks[task_name]['day'] = day++;
            fixed_tasks[task_name]['start_time'] = start_time;
-           fixed_tasks[task_name]['duration'] = durations; 
+           fixed_tasks[task_name]['duration'] = task_duration; 
            end_time = master.addTime(0000, duration);
            fixed_tasks[task_name]['end_time'] = end_time;
         }

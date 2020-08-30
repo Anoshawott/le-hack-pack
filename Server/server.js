@@ -86,14 +86,13 @@ app.post('/api/fixed', function (req, res) {
            //var duration = end_time - 2400;
            ///TASK 2
 
-           task_name = task_name + 'I';
-           duration = mas.Master.subtractTime(task_duration, "23:59"); //?
-           fixed_tasks[task_name] = task_name;
-           fixed_tasks[task_name]['day'] = day++;
-           fixed_tasks[task_name]['start_time'] = "00:00";
-           fixed_tasks[task_name]['duration'] = duration; 
-           end_time = master.addTime("00:00", duration);//gonn
+           task_name = task_name + '_next_day';
+           duration = mas.Master.subtractTime(duration, task_duration); 
+           console.log(duration)
+           fixed_tasks[task_name] = {'start_time':"00:00", 'day':day++, 'prep_time':prep_time};
+           end_time = mas.Master.addTime("00:00", duration);//gonn
            fixed_tasks[task_name]['end_time'] = end_time;
+           fixed_tasks[task_name]['duration'] = duration; //oh lol
         }
         else {
             fixed_tasks[task_name]['end_time'] = end_time
@@ -111,7 +110,7 @@ app.post('/api/fixed', function (req, res) {
         
         fixed_tasks[task_name] = {'start_time':start_time, 'day':day, 'prep_time':prep_time} 
         
-         var end_time = master.addTime(start_time, duration);
+         var end_time = mas.Master.addTime(start_time, duration);
          if(end_time > 2400){
            
            fixed_tasks[task_name]['end_time'] = 2359;
@@ -123,7 +122,7 @@ app.post('/api/fixed', function (req, res) {
            fixed_tasks[task_name]['day'] = day++;
            fixed_tasks[task_name]['start_time'] = start_time;
            fixed_tasks[task_name]['duration'] = task_duration; 
-           end_time = master.addTime(0000, duration);
+           end_time = mas.Master.addTime(0000, duration);
            fixed_tasks[task_name]['end_time'] = end_time;
         }
         else {

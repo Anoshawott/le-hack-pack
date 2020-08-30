@@ -57,6 +57,23 @@ class Master{
         return time;
     }
 
+    static timeToStr(time){
+        var mins = time%100;
+        var hours = time-mins;
+        hours = hours/100;
+        var pre_mins = "";
+        var pre_hours = "";
+        if(mins<10){
+            pre_mins = "0";
+        }
+        if(hours < 10){
+            pre_hours = "0";
+        }
+        mins = pre_mins + mins.toString();
+        hours = pre_hours + hours.toString();
+        return hours+":"+mins;
+    }
+
     /*
     * gets a start and a duration string in the form HH:MM
     */ 
@@ -83,7 +100,7 @@ class Master{
         return end_time;
     }
 
-    subtractTime(prep_time, start_time){
+    static subtractTime(prep_time, start_time){
         var start_parsed = parseTime(start_time);
         var prep_parsed = parseTime(prep_time);
         var prep_mins = prep_parsed % 100;
@@ -104,7 +121,7 @@ class Master{
         return prep_start;
     }
 
-    findTimeLength(start, end){
+    static findTimeLength(start, end){
         var parsed_start = parseTime(start);
         var parsed_end = parseTime(end);
         
